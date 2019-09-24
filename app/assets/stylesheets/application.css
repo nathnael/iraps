@@ -1,0 +1,41 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require animate/animate.css
+ *= require style
+ *= require toastr
+ *= require sweetalert2
+ *= require dataTables/datatables.min.css
+ *= require datepicker/datepicker.css
+ *= require daterangepicker.css
+ *= require chosen/chosen.css
+ *= require jquery.calendars/jquery.calendars.picker.css
+ *= require receipt_search_result
+ *= require print.css
+ *= require select2
+ *= require select2-bootstrap
+ */
+
+
+ .form-horizontal .control-label.text-left{
+     text-align: left;
+ }
+
+.width-100per{
+	width: 100% !important;
+}
+
+ .big-text-field {
+ 	font-size: 40px !important;
+	height: 50px !important;
+	background-color: #fff !important;
+ }
