@@ -69,7 +69,8 @@ gem 'ancestry'
 
 
 # Devise for authentication
-gem 'devise', '~> 4.2.0'
+# gem 'devise', '~> 4.2.0'
+gem 'devise', git: 'https://github.com/plataformatec/devise' #, ref: '88e9a85'
 
 gem 'rolify'
 

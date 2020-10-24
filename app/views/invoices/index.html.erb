@@ -1,0 +1,84 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Invoices</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">Lookups</a>
+      </li>
+      <li class="active">
+        <strong>Invoices</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-8">
+    <div class="title-action">
+      <%= link_to 'New Invoice', new_invoice_path, :class => "btn btn-primary"%>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content">
+  <div class="ibox float-e-margins">
+    <div class="ibox-content">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+                        <th>Vendor</th>
+                        <th>Received date</th>
+                        <th>Received from</th>
+                        <th>Invoice number</th>
+                        <th>Invoice date</th>
+                        <th>Currency type</th>
+                        <th>Amount</th>
+                        <th>Waybill number</th>
+                        <th>Lti number</th>
+                        <th>Remark</th>
+                        <th>Received by</th>
+                        <th>Submitted by</th>
+                        <th>Deleted at</th>
+                        <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @invoices.each do |invoice| %>
+          <tr>
+                        <td><%= invoice.vendor_id
+              %></td>
+                        <td><%= invoice.received_date
+              %></td>
+                        <td><%= invoice.received_from
+              %></td>
+                        <td><%= invoice.invoice_number
+              %></td>
+                        <td><%= invoice.invoice_date
+              %></td>
+                        <td><%= invoice.currency_type
+              %></td>
+                        <td><%= invoice.amount
+              %></td>
+                        <td><%= invoice.waybill_number
+              %></td>
+                        <td><%= invoice.lti_number
+              %></td>
+                        <td><%= invoice.remark
+              %></td>
+                        <td><%= invoice.received_by
+              %></td>
+                        <td><%= invoice.submitted_by
+              %></td>
+                        <td><%= invoice.deleted_at
+              %></td>
+                        <td>
+              <%= link_to 'Edit', edit_invoice_path(invoice) %> &middot;
+              <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

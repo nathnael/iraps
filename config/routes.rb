@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :invoices
   get '/warehouse_allocations/is_tr_created_for_this_warehouse_allocatoin'
   get '/warehouse_allocations/warehouse_allocation_zonal_view'
   get '/warehouse_allocations/warehouse_allocation_fdp_view'
