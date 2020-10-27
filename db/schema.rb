@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201024083525) do
+ActiveRecord::Schema.define(version: 20201027110045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "department_permissions", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "permission_id"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_department_permissions_on_deleted_at", using: :btree
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_departments_on_deleted_at", using: :btree
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_permissions_on_deleted_at", using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_roles_on_deleted_at", using: :btree
+  end
 
   create_table "seasons", force: :cascade do |t|
     t.string   "name",        null: false
@@ -56,6 +101,39 @@ ActiveRecord::Schema.define(version: 20201024083525) do
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "users_departments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "department_id"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_departments_on_deleted_at", using: :btree
+  end
+
+  create_table "users_permissions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "permission_id"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_permissions_on_deleted_at", using: :btree
+  end
+
+  create_table "users_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_roles_on_deleted_at", using: :btree
   end
 
 end

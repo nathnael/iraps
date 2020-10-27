@@ -1,50 +1,99 @@
-<!DOCTYPE html>
-<html>
+<% if user_signed_in? %>
+  <!DOCTYPE html>
+  <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IRAPS</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRAPS</title>
 
-  <!-- Main css styles -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-
+    <!-- Main css styles -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    
     <!-- Main javascript files -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <%= render 'layouts/layout_common_js' %>
+
+  </head>
+
+  <body>
+    <!-- Wrapper-->
+    <div id="wrapper">    
+        <!-- Navigation -->
+        <%= render 'layouts/navigation' %>
+          
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg">
+
+          <!-- Page wrapper -->
+          <%= render 'layouts/topnavbar' %>
+
+          <!-- Main view  -->
+          <%= yield %>
+
+          <!-- Footer -->
+          <%= render 'layouts/footer' %>
+
+        </div>
+        <!-- End page wrapper-->
+    </div>
+    <!-- End wrapper-->
+<% else %>
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>IRAPS</title>
+
+      <!-- Main css styles -->
+      <%= stylesheet_link_tag 'login_page', media: 'all', 'data-turbolinks-track' => true %>
+      
+      <!-- Main javascript files -->
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
 
-        <%= render 'layouts/layout_common_js' %>
+      <%= render 'layouts/layout_common_js' %>
 
-</head>
-
-<body>
-
-
-<!-- Wrapper-->
-  <div id="wrapper">
-
-    <% if user_signed_in? %>
-      <!-- Navigation -->
-      <%= render 'layouts/navigation' %>
-        <% end %>
-          <!-- Page wraper -->
-          <div id="page-wrapper" class="gray-bg">
-
-            <!-- Page wrapper -->
-            <%= render 'layouts/topnavbar' %>
-
-              <!-- Main view  -->
+    </head>
+        <body data-alert="">
+            <!-- HEADER-->
+            <header class="header">
+                <nav class="nav nav--tours">
+                    <a class="nav__el" href="#">Invoice Registration and Processing System</a>
+                </nav>
+                <div class="header__logo">
+                    <img alt="image" class="img-circle" src="<%= image_url('iraps-logo.png') %>">
+                </div>
+                <nav class="nav nav--user">
+                    <%= link_to "Log in", new_session_path(resource_name), class: 'nav__el' %><br />
+                    <%= link_to "Sign up", new_registration_path(resource_name), class: 'nav__el nav__el--cta' %>
+                </nav>
+            </header>
+            <!-- CONTENT-->
+            <main class="main">
               <%= yield %>
-
-                <!-- Footer -->
-                <%= render 'layouts/footer' %>
-
-          </div>
-          <!-- End page wrapper-->
-
-  </div>
-  <!-- End wrapper-->
-
+            </main>
+            <!-- FOOTER-->
+            <footer class="footer">
+                <div class="footer__logo">
+                    Version <%= Rails.configuration.version %>
+                </div>
+                <ul class="footer__nav">
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                <p class="footer__copyright">
+                    <strong>Copyright</strong> &copy; <%= Time.now.year %> Nathnael Getahun (Software Engineer)
+                </p>
+            </footer> 
+  <% end %>
 </body>
 
 </html>
