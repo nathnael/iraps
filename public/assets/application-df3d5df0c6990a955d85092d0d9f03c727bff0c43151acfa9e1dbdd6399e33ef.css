@@ -7036,6 +7036,7 @@ img {
 /* line 106, /home/zegeye/.rvm/gems/ruby-2.7.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_scaffolding.scss */
 .img-circle {
   border-radius: 50%;
+  width: 100%;
 }
 
 /* line 113, /home/zegeye/.rvm/gems/ruby-2.7.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_scaffolding.scss */
