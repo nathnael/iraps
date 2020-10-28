@@ -49,7 +49,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   def name
     first_name.to_s + ' ' + last_name.to_s
@@ -61,7 +61,7 @@ class User < ApplicationRecord
 
 
   def active_for_authentication?
-    super and self.is_active?
+    super and self.confirmed_at?
   end
 
 
