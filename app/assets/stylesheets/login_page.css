@@ -1434,14 +1434,8 @@
 }
 
 .large_anchor {
-    text-decoration: none;
     font-size: 16px;
     font-weight: 700;
-
-}
-
-.large_anchor {
-    font-size: 16px;
     color: #55c57a;
     margin-right: 50px;
     text-decoration: none !important;
