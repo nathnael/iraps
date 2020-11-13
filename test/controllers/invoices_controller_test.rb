@@ -17,7 +17,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create invoice" do
     assert_difference('Invoice.count') do
-      post invoices_url, params: { invoice: { amount: @invoice.amount, currency_type: @invoice.currency_type, deleted_at: @invoice.deleted_at, invoice_date: @invoice.invoice_date, invoice_number: @invoice.invoice_number, lti_number: @invoice.lti_number, received_by: @invoice.received_by, received_date: @invoice.received_date, received_from: @invoice.received_from, remark: @invoice.remark, submitted_by: @invoice.submitted_by, vendor_id: @invoice.vendor_id, waybill_number: @invoice.waybill_number } }
+      post invoices_url, params: { invoice: { created_by: @invoice.created_by, currency_type: @invoice.currency_type, date_received: @invoice.date_received, deleted_at: @invoice.deleted_at, invoice_amount: @invoice.invoice_amount, invoice_date: @invoice.invoice_date, invoice_number: @invoice.invoice_number, lti_number: @invoice.lti_number, modified_by: @invoice.modified_by, number_of_waybill: @invoice.number_of_waybill, received_by: @invoice.received_by, received_from: @invoice.received_from, remark: @invoice.remark, submitted_by: @invoice.submitted_by } }
     end
 
     assert_redirected_to invoice_url(Invoice.last)
@@ -34,7 +34,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update invoice" do
-    patch invoice_url(@invoice), params: { invoice: { amount: @invoice.amount, currency_type: @invoice.currency_type, deleted_at: @invoice.deleted_at, invoice_date: @invoice.invoice_date, invoice_number: @invoice.invoice_number, lti_number: @invoice.lti_number, received_by: @invoice.received_by, received_date: @invoice.received_date, received_from: @invoice.received_from, remark: @invoice.remark, submitted_by: @invoice.submitted_by, vendor_id: @invoice.vendor_id, waybill_number: @invoice.waybill_number } }
+    patch invoice_url(@invoice), params: { invoice: { created_by: @invoice.created_by, currency_type: @invoice.currency_type, date_received: @invoice.date_received, deleted_at: @invoice.deleted_at, invoice_amount: @invoice.invoice_amount, invoice_date: @invoice.invoice_date, invoice_number: @invoice.invoice_number, lti_number: @invoice.lti_number, modified_by: @invoice.modified_by, number_of_waybill: @invoice.number_of_waybill, received_by: @invoice.received_by, received_from: @invoice.received_from, remark: @invoice.remark, submitted_by: @invoice.submitted_by } }
     assert_redirected_to invoice_url(@invoice)
   end
 

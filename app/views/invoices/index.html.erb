@@ -21,60 +21,59 @@
   <div class="ibox float-e-margins">
     <div class="ibox-content">
 
-      <table class="table table-striped">
+      <table class="table table-striped cats-datatable">
         <thead>
           <tr>
-                        <th>Vendor</th>
-                        <th>Received date</th>
-                        <th>Received from</th>
-                        <th>Invoice number</th>
-                        <th>Invoice date</th>
-                        <th>Currency type</th>
-                        <th>Amount</th>
-                        <th>Waybill number</th>
-                        <th>Lti number</th>
-                        <th>Remark</th>
-                        <th>Received by</th>
-                        <th>Submitted by</th>
-                        <th>Deleted at</th>
-                        <th>Actions</th>
+            <th>Invoice number</th>
+            <th>Vendor Name</th>
+            <th>Date received</th>
+            <th>Invoice date</th>
+            <th>Lti number</th>
+            <th>Received by</th>
+            <th>Received from</th>
+            <th>Submitted by</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
           <% @invoices.each do |invoice| %>
-          <tr>
-                        <td><%= invoice.vendor_id
-              %></td>
-                        <td><%= invoice.received_date
-              %></td>
-                        <td><%= invoice.received_from
-              %></td>
-                        <td><%= invoice.invoice_number
-              %></td>
-                        <td><%= invoice.invoice_date
-              %></td>
-                        <td><%= invoice.currency_type
-              %></td>
-                        <td><%= invoice.amount
-              %></td>
-                        <td><%= invoice.waybill_number
-              %></td>
-                        <td><%= invoice.lti_number
-              %></td>
-                        <td><%= invoice.remark
-              %></td>
-                        <td><%= invoice.received_by
-              %></td>
-                        <td><%= invoice.submitted_by
-              %></td>
-                        <td><%= invoice.deleted_at
-              %></td>
-                        <td>
-              <%= link_to 'Edit', edit_invoice_path(invoice) %> &middot;
-              <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <%= link_to invoice.invoice_number, invoice %>
+              </td>
+              <td>
+                <%= invoice.vendor.name %>
+              </td>
+              <td>
+                <%= invoice.date_received.to_date.to_formatted_s(:long_ordinal) %>
+              </td>
+              <td>
+                <%= invoice.invoice_date.to_date.to_formatted_s(:long_ordinal) %>
+              </td>
+              <td>
+                <%= invoice.lti_number %>
+              </td>
+              <td>
+                <%= invoice.user.name %>
+              </td>
+              <td>
+                <%= invoice.received_from %>
+              </td>
+              <td>
+                <%= invoice.submitted_by %>
+              </td> 
+              <td>
+                <a href="<%= edit_invoice_path(invoice) %>" class="btn btn-warning btn-sm">
+                  <i class="fa fa-pencil"></i>   
+                  Edit                   
+                </a>
+                <%= link_to invoice, method: :delete, :class => "btn btn-danger btn-sm", :data=> { :confirm => "Are you sure?" }  do %>
+                  <i class="fa fa-archive"></i>   
+                  Delete     
+                <% end %>
+              </td>
+            </tr>
           <% end %>
         </tbody>
       </table>

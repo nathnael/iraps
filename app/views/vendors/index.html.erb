@@ -1,0 +1,67 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Vendors</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">Lookups</a>
+      </li>
+      <li class="active">
+        <strong>Vendors</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-8">
+    <div class="title-action">
+      <%= link_to 'New Vendor', new_vendor_path, :class => "btn btn-primary"%>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content">
+  <div class="ibox float-e-margins">
+    <div class="ibox-content">
+
+      <table class="table table-striped cats-datatable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Org unit</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @vendors.each do |vendor| %>
+            <tr>
+              <td>
+                <%= vendor.name %>
+              </td>
+              <td>
+                <%= vendor.code %>
+              </td>
+              <td>
+                <%= vendor.org_unit %>
+              </td>
+              <td>
+                <%= vendor.status %>
+              </td>
+              <td>
+                <a href="<%= edit_vendor_path(vendor)%>" class="btn btn-warning btn-sm">
+                  <i class="fa fa-pencil"></i>   
+                  Edit                   
+                </a>
+                <%= link_to vendor, method: :delete, :class => "btn btn-danger btn-sm", :data=> { :confirm => "Are you sure?" }  do %>
+                  <i class="fa fa-archive"></i>   
+                  Delete     
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

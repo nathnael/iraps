@@ -1,67 +1,211 @@
-    <p>
-      <strong>Vendor:</strong>
-      <%= @invoice.vendor_id %>
-    </p>
-
-    <p>
-      <strong>Received date:</strong>
-      <%= @invoice.received_date %>
-    </p>
-
-    <p>
-      <strong>Received from:</strong>
-      <%= @invoice.received_from %>
-    </p>
-
-    <p>
-      <strong>Invoice number:</strong>
-      <%= @invoice.invoice_number %>
-    </p>
-
-    <p>
-      <strong>Invoice date:</strong>
-      <%= @invoice.invoice_date %>
-    </p>
-
-    <p>
-      <strong>Currency type:</strong>
-      <%= @invoice.currency_type %>
-    </p>
-
-    <p>
-      <strong>Amount:</strong>
-      <%= @invoice.amount %>
-    </p>
-
-    <p>
-      <strong>Waybill number:</strong>
-      <%= @invoice.waybill_number %>
-    </p>
-
-    <p>
-      <strong>Lti number:</strong>
-      <%= @invoice.lti_number %>
-    </p>
-
-    <p>
-      <strong>Remark:</strong>
-      <%= @invoice.remark %>
-    </p>
-
-    <p>
-      <strong>Received by:</strong>
-      <%= @invoice.received_by %>
-    </p>
-
-    <p>
-      <strong>Submitted by:</strong>
-      <%= @invoice.submitted_by %>
-    </p>
-
-    <p>
-      <strong>Deleted at:</strong>
-      <%= @invoice.deleted_at %>
-    </p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Show Invoice</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">Invoice</a>
+      </li>
+      <li class="active">
+        <strong>Show</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-8">
+    <div class="title-action">
+      <a href="<%= edit_invoice_path(@invoice)%>" class="btn btn-warning btn-sm">
+        <i class="fa fa-pencil"></i>   
+        Edit                   
+      </a> 
+      <%= link_to 'Back', invoices_path,  :class => "btn btn-default"%>
+    </div>
+  </div>
+</div>
+<div class="wrapper wrapper-content">
+  <div class="ibox float-e-margins" >
+    <div class="ibox-content">
+      <div class="row">
+        <div class="controls col-sm-4">
+          <div class="control-group">        
+              <div class="control-label col-sm-5">                
+                <p class="form-control-static pull-right">
+                  <strong>Invoice number:</strong>
+                </p>
+              </div>
+              <div class="controls col-sm-7">
+                <p class="form-control-static">
+                  <%= @invoice.invoice_number %>
+                </p>
+              </div>
+          </div>
+        </div> 
+        <div class="controls col-sm-4">
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Date received:</strong>
+              </p>
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.date_received.to_date.to_formatted_s(:long_ordinal) %>
+              </p>
+            </div>
+          </div>
+        </div>   
+        <div class="controls col-sm-4">
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Invoice date:</strong>
+              </p>
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.invoice_date.to_date.to_formatted_s(:long_ordinal) %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="controls col-sm-4">
+          <div class="control-group">        
+              <div class="control-label col-sm-5">                
+                <p class="form-control-static pull-right">
+                  <strong>Currency type:</strong>
+                </p>
+              </div>
+              <div class="controls col-sm-7">
+                <p class="form-control-static">
+                  <%= @invoice.currency_type %>
+                </p>
+              </div>
+          </div>
+        </div> 
+        <div class="controls col-sm-4">
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Number of waybill:</strong>
+              </p>
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.number_of_waybill %>
+              </p>
+            </div>
+          </div>
+        </div>   
+        <div class="controls col-sm-4">
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Invoice amount:</strong>
+              </p>
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.invoice_amount %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="controls col-sm-4">      
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Submitted by:</strong>  
+              </p>        
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.submitted_by %>
+              </p>
+            </div>
+          </div>
+        </div>           
+        <div class="controls col-sm-4">      
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Lti number:</strong>
+              </p>
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.lti_number %>
+              </p>
+            </div>
+          </div>
+        </div>   
+        <div class="controls col-sm-4">
+          <div class="control-group">
+            <div class="control-label col-sm-5">              
+              <p class="form-control-static pull-right">
+                <strong>Received by:</strong> 
+              </p>         
+            </div>
+            <div class="controls col-sm-7">
+              <p class="form-control-static">
+                <%= @invoice.user.name %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="controls col-sm-4">
+          <div class="control-group">        
+              <div class="control-label col-sm-5">                
+                <p class="form-control-static pull-right">
+                  <strong>Received from:</strong>
+                </p>
+              </div>
+              <div class="controls col-sm-7">
+                <p class="form-control-static">
+                  <%= @invoice.received_from %>
+                </p>
+              </div>
+          </div>
+        </div> 
+        <div class="controls col-sm-4">
+          <div class="control-group">        
+              <div class="control-label col-sm-5">                
+                <p class="form-control-static pull-right">
+                  <strong>Remark:</strong>
+                </p>
+              </div>
+              <div class="controls col-sm-7">
+                <p class="form-control-static">
+                  <%= @invoice.remark %>
+                </p>
+              </div>
+          </div>
+        </div>
+        <div class="controls col-sm-4">
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="controls col-sm-4">
+          <div class="control-group">        
+              <div class="control-label col-sm-6">
+                           
+              </div>
+              <div class="controls col-sm-6">
+                
+              </div>
+          </div>
+        </div> 
+        <div class="controls col-sm-4">      
+          
+        </div>   
+        <div class="controls col-sm-4">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,31 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  vendor_id: 1
-  received_date: 2019-10-07 15:45:06
-  received_from: 1
-  invoice_number: MyText
-  invoice_date: 2019-10-07 15:45:06
+  invoice_number: MyString
+  date_received: 2020-11-13 01:54:13
+  invoice_date: 2020-11-13 01:54:13
   currency_type: 1
-  amount: 1.5
-  waybill_number: MyText
-  lti_number: MyText
+  number_of_waybill: 1
+  invoice_amount: 9.99
   remark: MyText
+  lti_number: MyString
   received_by: 1
-  submitted_by: MyText
-  deleted_at: 2019-10-07 15:45:06
+  received_from: 1
+  submitted_by: MyString
+  deleted_at: 2020-11-13 01:54:13
+  created_by: 1
+  modified_by: 1
 
 two:
-  vendor_id: 1
-  received_date: 2019-10-07 15:45:06
-  received_from: 1
-  invoice_number: MyText
-  invoice_date: 2019-10-07 15:45:06
+  invoice_number: MyString
+  date_received: 2020-11-13 01:54:13
+  invoice_date: 2020-11-13 01:54:13
   currency_type: 1
-  amount: 1.5
-  waybill_number: MyText
-  lti_number: MyText
+  number_of_waybill: 1
+  invoice_amount: 9.99
   remark: MyText
+  lti_number: MyString
   received_by: 1
-  submitted_by: MyText
-  deleted_at: 2019-10-07 15:45:06
+  received_from: 1
+  submitted_by: MyString
+  deleted_at: 2020-11-13 01:54:13
+  created_by: 1
+  modified_by: 1

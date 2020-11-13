@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201028162229) do
+ActiveRecord::Schema.define(version: 20201112234207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,25 @@ ActiveRecord::Schema.define(version: 20201028162229) do
     t.datetime "updated_at",  null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_departments_on_deleted_at", using: :btree
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "invoice_number"
+    t.datetime "date_received"
+    t.datetime "invoice_date"
+    t.integer  "currency_type"
+    t.integer  "number_of_waybill"
+    t.decimal  "invoice_amount"
+    t.text     "remark"
+    t.string   "lti_number"
+    t.integer  "received_from"
+    t.string   "submitted_by"
+    t.datetime "deleted_at"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "vendor_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -143,6 +162,19 @@ ActiveRecord::Schema.define(version: 20201028162229) do
     t.datetime "updated_at",  null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_roles_on_deleted_at", using: :btree
+  end
+
+  create_table "vendors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "org_unit"
+    t.string   "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.index ["deleted_at"], name: "index_vendors_on_deleted_at", using: :btree
   end
 
 end

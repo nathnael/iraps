@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.includes(:vendor, :user).all
   end
 
   # GET /invoices/1
@@ -25,10 +25,10 @@ class InvoicesController < ApplicationController
   # POST /invoices.json
   def create
     @invoice = Invoice.new(invoice_params)
-
+    @invoice.created_by = current_user.id
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+        format.html { redirect_to invoices_url, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new }
@@ -40,9 +40,10 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
   def update
+    @invoice.modified_by = current_user.id
     respond_to do |format|
       if @invoice.update(invoice_params)
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
+        format.html { redirect_to invoices_url, notice: 'Invoice was successfully updated.' }
         format.json { render :show, status: :ok, location: @invoice }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:vendor_id, :received_date, :received_from, :invoice_number, :invoice_date, :currency_type, :amount, :waybill_number, :lti_number, :remark, :received_by, :submitted_by, :deleted_at)
+      params.require(:invoice).permit(:invoice_number, :vendor_id, :date_received, :invoice_date, :currency_type, :number_of_waybill, :invoice_amount, :remark, :lti_number, :received_by, :received_from, :submitted_by, :deleted_at, :created_by, :modified_by)
     end
 end

@@ -6,10 +6,13 @@
 
       <li>
         <a>Logistics Module</a>
-        <ul class="nav nav-second-level collapse">         
-          <li class="">
-            <a>Registration</a>            
-          </li>          
+        <ul class="nav nav-second-level collapse">
+          <li class="<%= 'active' if is_active_controller('vendors')  %>">
+            <%= link_to t(:vendors), vendors_url %>            
+          </li>  
+          <li class="<%= 'active' if is_active_controller('invoices')  %>">
+            <%= link_to t(:register_invoices), invoices_url %>            
+          </li>  
           <li class="">
             <a>Distribution</a>
           </li>
